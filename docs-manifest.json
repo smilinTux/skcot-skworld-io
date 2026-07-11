@@ -1,0 +1,13 @@
+{
+  "repo": "smilinTux/skcot",
+  "branch": "main",
+  "docs": [
+    { "name": "README.md", "title": "Overview" },
+    { "name": "STACK.md", "title": "Where it lands in the stack" },
+    { "name": "ARCHITECTURE.md", "title": "Architecture" },
+    { "name": "ATAK-INTEGRATION.md", "title": "ATAK integration" },
+    { "name": "STANDARDS.md", "title": "SK standards and standing orders" },
+    { "name": "GETTING-STARTED.md", "title": "Getting started" },
+    { "name": "MIGRATION.md", "title": "Migration" }
+  ]
+}
