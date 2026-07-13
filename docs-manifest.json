@@ -1,13 +1,37 @@
 {
   "repo": "smilinTux/skcot",
   "branch": "main",
+  "path": "docs",
+  "generated": "2026-07-13",
+  "note": "Committed fallback for the /docs viewer when the GitHub Contents API is unavailable or rate-limited. Regenerate from: python docs-manifest-gen.py smilinTux/skcot --out docs-manifest.json",
   "docs": [
-    { "name": "README.md", "title": "Overview" },
-    { "name": "STACK.md", "title": "Where it lands in the stack" },
-    { "name": "ARCHITECTURE.md", "title": "Architecture" },
-    { "name": "ATAK-INTEGRATION.md", "title": "ATAK integration" },
-    { "name": "STANDARDS.md", "title": "SK standards and standing orders" },
-    { "name": "GETTING-STARTED.md", "title": "Getting started" },
-    { "name": "MIGRATION.md", "title": "Migration" }
+    {
+      "name": "ARCHITECTURE.md",
+      "title": "Architecture"
+    },
+    {
+      "name": "ATAK-INTEGRATION.md",
+      "title": "ATAK Integration"
+    },
+    {
+      "name": "GETTING-STARTED.md",
+      "title": "Getting Started"
+    },
+    {
+      "name": "MIGRATION.md",
+      "title": "skcot Migration Guide"
+    },
+    {
+      "name": "README.md",
+      "title": "skcot"
+    },
+    {
+      "name": "STACK.md",
+      "title": "Where skcot lands in the stack"
+    },
+    {
+      "name": "STANDARDS.md",
+      "title": "SK Standards and Standing Orders"
+    }
   ]
 }
