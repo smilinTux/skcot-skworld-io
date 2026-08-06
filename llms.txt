@@ -1,0 +1,20 @@
+# SKCoT
+
+> the first AI teammate on the tactical net
+
+skcot puts a sovereign AI teammate on the ATAK tactical net. Cursor-on-Target, spoken from your own infrastructure. Part of the SK ecosystem.
+
+## Links
+
+- [Live site](https://skcot.skworld.io)
+- [GitHub repo](https://github.com/smilinTux/skcot)
+- [Docs](https://skcot.skworld.io/docs.html)
+
+## About smilinTux
+
+SKCoT is part of the **smilinTux sovereign AI ecosystem**, a suite of
+open-source tools built by King Divad and Lumina to give humans and AI agents
+genuine, authentic infrastructure they can own and trust. No corporate robotics.
+No black-box clouds. GPL-3.0 forever.
+
+Other ecosystem projects: [SKWorld](https://skworld.io), [SKMemory](https://skmemory.io), [SKSecurity](https://sksecurity.io), [CapAuth](https://capauth.io), [SKComm](https://skcomm.io), [SKGraph](https://skgraph.io), [SKVector](https://skvector.io)
