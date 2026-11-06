@@ -3,317 +3,75 @@
   "diagram_type": "architecture",
   "meta": {
     "title": "skcot Component Map",
-    "subtitle": "The seven modules and the ephemeral/durable split. Derived from smilinTux/skcot's README.md and docs/ARCHITECTURE.md.",
+    "subtitle": "One process on the tactical net: listeners, the a-* vs b-* classifier, the situational store, the sovereign CA, and the AI teammate. Derived from the skcot README, SOP system diagram, and docs/ARCHITECTURE.md.",
     "output": "skcot.architecture.html",
     "quality_profile": "showcase"
   },
   "components": [
-    {
-      "id": "atak",
-      "type": "external",
-      "label": "ATAK / iTAK / WinTAK",
-      "sublabel": "enrolled TAK clients",
-      "pos": [
-        60,
-        40
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "mesh",
-      "type": "external",
-      "label": "Mesh SA peers",
-      "sublabel": "UDP multicast Mesh SA",
-      "pos": [
-        280,
-        40
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "server",
-      "type": "backend",
-      "label": "skcot.server",
-      "sublabel": "TCP :8087, TLS :8089, UDP mesh listener",
-      "pos": [
-        500,
-        40
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "codec",
-      "type": "backend",
-      "label": "skcot.codec",
-      "sublabel": "CoT XML / TAK protobuf <-> skcomms Envelope",
-      "pos": [
-        720,
-        40
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "geo",
-      "type": "database",
-      "label": "skcot.geo (GEO_STORE)",
-      "sublabel": "situational store: units, markers, waypoints",
-      "pos": [
-        60,
-        280
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "geo_http",
-      "type": "backend",
-      "label": "skcot.geo_http",
-      "sublabel": "read-only bridge :8091",
-      "pos": [
-        280,
-        280
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "pki",
-      "type": "security",
-      "label": "skcot.pki",
-      "sublabel": "CA + per-device client certs, enrollment .zip",
-      "pos": [
-        500,
-        280
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "agent",
-      "type": "backend",
-      "label": "skcot.agent",
-      "sublabel": "AI teammate: beacons position, answers GeoChat",
-      "pos": [
-        720,
-        280
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "client",
-      "type": "backend",
-      "label": "skcot.client",
-      "sublabel": "CoT test / peer client",
-      "pos": [
-        60,
-        520
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "service",
-      "type": "backend",
-      "label": "skcot.service",
-      "sublabel": "ties modules into one daemon",
-      "pos": [
-        280,
-        520
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "skcomms",
-      "type": "external",
-      "label": "skcomms fabric",
-      "sublabel": "Envelope, identity, discovery, TOFU",
-      "pos": [
-        500,
-        520
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "llm",
-      "type": "external",
-      "label": "configured LLM",
-      "sublabel": "drives agent GeoChat replies",
-      "pos": [
-        720,
-        520
-      ],
-      "size": [
-        180,
-        70
-      ]
-    },
-    {
-      "id": "skcapstone",
-      "type": "external",
-      "label": "skcapstone (optional)",
-      "sublabel": "optional reasoning + memory",
-      "pos": [
-        60,
-        760
-      ],
-      "size": [
-        180,
-        70
-      ]
-    }
+    { "id": "pkg", "type": "security", "label": "Device data package", "sublabel": "packages/<device>.zip, built once", "pos": [40, 40], "size": [170, 64] },
+    { "id": "ca", "type": "security", "label": "skcot.pki CA", "sublabel": "ca.pem / ca.key, RSA-2048 on disk", "pos": [300, 40], "size": [170, 64], "tag": "tier T0" },
+    { "id": "skcapstone", "type": "external", "label": "skcapstone", "sublabel": "optional: reasoning + memory", "pos": [820, 40], "size": [170, 64], "tag": "optional" },
+    { "id": "llm", "type": "external", "label": "Your own LLM", "sublabel": "answers operator GeoChat", "pos": [1080, 40], "size": [170, 64] },
+
+    { "id": "atak", "type": "external", "label": "ATAK / iTAK / WinTAK", "sublabel": "enrolled TAK clients", "pos": [40, 210], "size": [170, 64] },
+    { "id": "mesh", "type": "external", "label": "Mesh SA device", "sublabel": "UDP multicast, no server", "pos": [40, 490], "size": [170, 64] },
+
+    { "id": "tls", "type": "backend", "label": "TlsCotStreamServer", "sublabel": ":8089 TLS, ssl.CERT_OPTIONAL", "pos": [300, 210], "size": [170, 64], "tag": "weak point" },
+    { "id": "plain", "type": "backend", "label": "CotStreamServer", "sublabel": ":8087 plain TCP", "pos": [300, 350], "size": [170, 64] },
+    { "id": "udp", "type": "backend", "label": "UdpMeshListener", "sublabel": "239.2.3.1:6969 + GeoChat group", "pos": [300, 490], "size": [170, 64] },
+    { "id": "agent", "type": "backend", "label": "skcot.agent", "sublabel": "AI teammate: beacons position, reads GeoChat", "pos": [560, 210], "size": [170, 64] },
+    { "id": "codec", "type": "backend", "label": "skcot.codec", "sublabel": "is_ephemeral_beacon: a-* vs b-*", "pos": [560, 350], "size": [170, 64] },
+    { "id": "fed", "type": "backend", "label": "federation_ingest", "sublabel": "signed Envelope out, peer CoT injected in", "pos": [820, 210], "size": [170, 64] },
+    { "id": "geo", "type": "database", "label": "GEO_STORE", "sublabel": "in-memory, supersede by uid", "pos": [820, 350], "size": [170, 64] },
+    { "id": "geo_http", "type": "backend", "label": "skcot.geo_http", "sublabel": "127.0.0.1:8091, GET /geo/units", "pos": [820, 490], "size": [170, 64] },
+
+    { "id": "fabric", "type": "external", "label": "skcomms fabric", "sublabel": "CoT-capable peer nodes", "pos": [1080, 210], "size": [170, 64] },
+    { "id": "skmap", "type": "external", "label": "skcomms geo_store", "sublabel": "sources live CoT for SkMap", "pos": [1080, 490], "size": [170, 64] }
   ],
-  "boundaries": [],
+  "boundaries": [
+    { "kind": "security-group", "label": "skcot.pki, sovereign CA on disk", "wraps": ["pkg", "ca"] },
+    { "kind": "region", "label": "Tactical devices (tailnet or LAN)", "wraps": ["atak", "mesh"] },
+    { "kind": "region", "label": "skcot.service, one process", "wraps": ["tls", "plain", "udp", "agent", "codec", "fed", "geo", "geo_http"] }
+  ],
   "connections": [
-    {
-      "id": "atak-server",
-      "from": "atak",
-      "to": "server",
-      "label": "CoT stream",
-      "variant": "default"
-    },
-    {
-      "id": "mesh-server",
-      "from": "mesh",
-      "to": "server",
-      "label": "Mesh SA UDP",
-      "variant": "default"
-    },
-    {
-      "id": "pki-atak",
-      "from": "pki",
-      "to": "atak",
-      "label": "enrollment .zip",
-      "variant": "security"
-    },
-    {
-      "id": "pki-server",
-      "from": "pki",
-      "to": "server",
-      "label": "TLS cert",
-      "variant": "security"
-    },
-    {
-      "id": "server-codec",
-      "from": "server",
-      "to": "codec",
-      "label": "classify a-*/b-*",
-      "variant": "default"
-    },
-    {
-      "id": "codec-geo",
-      "from": "codec",
-      "to": "geo",
-      "label": "supersede by uid",
-      "variant": "default"
-    },
-    {
-      "id": "codec-skcomms",
-      "from": "codec",
-      "to": "skcomms",
-      "label": "durable b-* mail",
-      "variant": "default"
-    },
-    {
-      "id": "geo-geo_http",
-      "from": "geo",
-      "to": "geo_http",
-      "variant": "default"
-    },
-    {
-      "id": "geo_http-skcomms",
-      "from": "geo_http",
-      "to": "skcomms",
-      "label": "GET /geo/units",
-      "variant": "dashed"
-    },
-    {
-      "id": "agent-server",
-      "from": "agent",
-      "to": "server",
-      "label": "beacon + GeoChat",
-      "variant": "default"
-    },
-    {
-      "id": "agent-llm",
-      "from": "agent",
-      "to": "llm",
-      "label": "route reply",
-      "variant": "default"
-    },
-    {
-      "id": "agent-skcapstone",
-      "from": "agent",
-      "to": "skcapstone",
-      "label": "optional",
-      "variant": "dashed"
-    },
-    {
-      "id": "client-server",
-      "from": "client",
-      "to": "server",
-      "label": "test / peer",
-      "variant": "dashed"
-    },
-    {
-      "id": "service-server",
-      "from": "service",
-      "to": "server",
-      "label": "binds listeners",
-      "variant": "default"
-    },
-    {
-      "id": "service-geo",
-      "from": "service",
-      "to": "geo",
-      "label": "wires inbound CoT",
-      "variant": "default"
-    },
-    {
-      "id": "service-skcomms",
-      "from": "service",
-      "to": "skcomms",
-      "label": "advertises capability",
-      "variant": "default"
-    }
+    { "id": "ca-signs-pkg", "from": "ca", "to": "pkg", "label": "signs", "variant": "security" },
+    { "id": "pkg-to-atak", "from": "pkg", "to": "atak", "label": "imported once on the device", "variant": "security" },
+    { "id": "ca-to-tls", "from": "ca", "to": "tls", "label": "verifies optional client certs", "variant": "security" },
+
+    { "id": "atak-to-tls", "from": "atak", "to": "tls", "label": "TLS by IP (PKI cert) or by SNI name", "variant": "emphasis" },
+    { "id": "atak-to-plain", "from": "atak", "to": "plain", "label": "unauthenticated / testing", "variant": "dashed" },
+    { "id": "mesh-to-udp", "from": "mesh", "to": "udp", "label": "CoT XML or TAK protobuf", "variant": "default" },
+
+    { "id": "tls-to-codec", "from": "tls", "to": "codec", "variant": "default" },
+    { "id": "plain-to-codec", "from": "plain", "to": "codec", "variant": "default" },
+    { "id": "udp-to-codec", "from": "udp", "to": "codec", "variant": "default" },
+    { "id": "codec-to-geo", "from": "codec", "to": "geo", "label": "every event", "variant": "emphasis" },
+    { "id": "codec-to-fed", "from": "codec", "to": "fed", "label": "a-* short TTL, no ack; b-* signed, retried", "variant": "default" },
+    { "id": "fed-to-fabric", "from": "fed", "to": "fabric", "label": "federate to peers", "variant": "emphasis" },
+    { "id": "fabric-to-fed", "from": "fabric", "to": "fed", "label": "inbox inject to local clients", "variant": "dashed", "fromSide": "bottom", "toSide": "bottom" },
+
+    { "id": "geo-to-http", "from": "geo", "to": "geo_http", "variant": "default" },
+    { "id": "http-to-skmap", "from": "geo_http", "to": "skmap", "label": "http GET", "variant": "default" },
+
+    { "id": "agent-to-tls", "from": "agent", "to": "tls", "label": "connects as a unit", "variant": "default" },
+    { "id": "agent-to-llm", "from": "agent", "to": "llm", "label": "GeoChat reply", "variant": "default" },
+    { "id": "agent-to-skcapstone", "from": "agent", "to": "skcapstone", "label": "optional brain", "variant": "dashed" }
   ],
   "cards": [
-    {
-      "dot": "cyan",
-      "title": "The ephemeral situational rail",
-      "items": [
-        "Atoms (a-*, position beacons) get a short TTL derived from the CoT event's own stale time, supersede-only by entity uid, no acknowledgement, gated to CoT-capable peers only",
-        "Bits (b-*, GeoChat/markers/files) ride the durable skcomms mail path: signed, retried, kept until read",
-        "skcot consumes skcomms; skcomms never imports skcot, a one-way boundary"
-      ]
-    }
+    { "dot": "cyan", "title": "Two rails, one classifier", "items": [
+      "is_ephemeral_beacon in skcot.codec decides every route: a-* position atoms vs b-* bits (GeoChat, markers, files)",
+      "Ephemeral rail: TTL derived from the event's own stale time, supersede-only by uid, no acknowledgement, sent only to CoT-capable peers",
+      "Durable rail: b-* events ride the fabric's mail path, signed, retried, kept until read"
+    ] },
+    { "dot": "emerald", "title": "A leaf on the fabric", "items": [
+      "skcomms is the only hard dependency: envelopes, identity, discovery, trust-on-first-use",
+      "skcomms never imports skcot; it reads live CoT at runtime over GET /geo/units instead",
+      "skcapstone is optional; without it skcot is a plain CoT/TAK bridge plus situational store"
+    ] },
+    { "dot": "rose", "title": "Documented weak points", "items": [
+      "The TLS listener runs ssl.CERT_OPTIONAL: a client cert attributes a device, it does not admit one; access control is the tailnet bind",
+      "CA and server private keys sit on disk unencrypted; classical RSA-2048, maturity tier T0",
+      "Self-built reference implementation, no independent audit; see SECURITY.md before relying on it"
+    ] }
   ]
 }

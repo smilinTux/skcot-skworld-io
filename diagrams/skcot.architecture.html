@@ -5195,7 +5195,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="pulse-dot"></div>
         <h1>skcot Component Map</h1>
       </div>
-      <p class="subtitle">The seven modules and the ephemeral/durable split. Derived from smilinTux/skcot&#39;s README.md and docs/ARCHITECTURE.md.</p>
+      <p class="subtitle">One process on the tactical net: listeners, the a-* vs b-* classifier, the situational store, the sovereign CA, and the AI teammate. Derived from the skcot README, SOP system diagram, and docs/ARCHITECTURE.md.</p>
     </div>
 
 
@@ -5203,9 +5203,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <!-- Main Diagram -->
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / PLATE 04">
-      <svg viewBox="0 0 943 898" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
+      <svg viewBox="0 0 1290 642" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
         <title id="archify-diagram-title">skcot Component Map</title>
-        <desc id="archify-diagram-description">The seven modules and the ephemeral/durable split. Derived from smilinTux/skcot&#39;s README.md and docs/ARCHITECTURE.md.</desc>
+        <desc id="archify-diagram-description">One process on the tactical net: listeners, the a-* vs b-* classifier, the situational store, the sovereign CA, and the AI teammate. Derived from the skcot README, SOP system diagram, and docs/ARCHITECTURE.md.</desc>
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -5250,309 +5250,371 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <rect width="100%" height="100%" fill="url(#grid)" />
 
         <!-- Boundaries (behind everything) -->
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="security-group" data-composition-frame-id="0" data-composition-frame-label="skcot.pki, sovereign CA on disk" x="10" y="10" width="490" height="114" rx="8" class="c-security-group" stroke-width="1"/>
 
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="1" data-composition-frame-label="Tactical devices (tailnet or LAN)" x="10" y="180" width="230" height="394" rx="12" class="c-region" stroke-width="1"/>
+
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="2" data-composition-frame-label="skcot.service, one process" x="270" y="180" width="750" height="394" rx="12" class="c-region" stroke-width="1"/>
 
         <!-- Connection paths (before components for correct z-order) -->
         <g data-graph-role="automatic-crossover" style="--step:0">
-          <path data-graph-role="automatic-crossover-underlay" d="M 240 75 L 256 75 Q 264 75 264 67 L 264 45 Q 264 37 272 37 L 468 37 Q 476 37 476 45 L 476 60 Q 476 68 484 68 L 500 68" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="atak" data-edge-to="server" data-edge-label="CoT stream" data-edge-key="0" data-edge-id="atak-server" data-composition-points="240,75;264,75;264,37;476,37;476,68;500,68" data-composition-crossover="halo" data-composition-independent="true" d="M 240 75 L 256 75 Q 264 75 264 67 L 264 45 Q 264 37 272 37 L 468 37 Q 476 37 476 45 L 476 60 Q 476 68 484 68 L 500 68" class="a-default" data-animate="edge" style="--step:0" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 300 72 L 210 72" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="ca" data-edge-to="pkg" data-edge-label="signs" data-edge-key="0" data-edge-id="ca-signs-pkg" data-composition-points="300,72;210,72" data-composition-crossover="halo" data-composition-independent="true" d="M 300 72 L 210 72" class="a-security" data-animate="edge" style="--step:0" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:1">
-          <path data-graph-role="automatic-crossover-underlay" d="M 460 75 L 476 75 Q 484 75 484 67 L 484 24 Q 484 16 492 16 L 582 16 Q 590 16 590 24 L 590 40" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="mesh" data-edge-to="server" data-edge-label="Mesh SA UDP" data-edge-key="1" data-edge-id="mesh-server" data-composition-points="460,75;484,75;484,16;590,16;590,40" data-composition-crossover="halo" data-composition-independent="true" d="M 460 75 L 476 75 Q 484 75 484 67 L 484 24 Q 484 16 492 16 L 582 16 Q 590 16 590 24 L 590 40" class="a-default" data-animate="edge" style="--step:1" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 125 104 L 125 210" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="pkg" data-edge-to="atak" data-edge-label="imported once on the device" data-edge-key="1" data-edge-id="pkg-to-atak" data-composition-points="125,104;125,210" data-composition-crossover="halo" data-composition-independent="true" d="M 125 104 L 125 210" class="a-security" data-animate="edge" style="--step:1" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:2">
-          <path data-graph-role="automatic-crossover-underlay" d="M 583 280 L 583 264 Q 583 256 575 256 L 158 256 Q 150 256 150 248 L 150 110" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="pki" data-edge-to="atak" data-edge-label="enrollment .zip" data-edge-key="2" data-edge-id="pki-atak" data-composition-points="583,280;583,256;150,256;150,110" data-composition-crossover="halo" data-composition-independent="true" d="M 583 280 L 583 264 Q 583 256 575 256 L 158 256 Q 150 256 150 248 L 150 110" class="a-security" data-animate="edge" style="--step:2" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 385 104 L 385 210" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="ca" data-edge-to="tls" data-edge-label="verifies optional client certs" data-edge-key="2" data-edge-id="ca-to-tls" data-composition-points="385,104;385,210" data-composition-crossover="halo" data-composition-independent="true" d="M 385 104 L 385 210" class="a-security" data-animate="edge" style="--step:2" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:3">
-          <path data-graph-role="automatic-crossover-underlay" d="M 597 280 L 597 110" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="pki" data-edge-to="server" data-edge-label="TLS cert" data-edge-key="3" data-edge-id="pki-server" data-composition-points="597,280;597,110" data-composition-crossover="halo" data-composition-independent="true" d="M 597 280 L 597 110" class="a-security" data-animate="edge" style="--step:3" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 210 233.95 L 226 233.95 Q 234 233.95 234 225.95 L 234 194 Q 234 186 242 186 L 361.95 186 Q 369.95 186 369.95 194 L 369.95 210" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="atak" data-edge-to="tls" data-edge-label="TLS by IP (PKI cert) or by SNI name" data-edge-key="3" data-edge-id="atak-to-tls" data-composition-points="210,233.95;234,233.95;234,186;369.95,186;369.95,210" data-composition-crossover="halo" data-composition-independent="true" d="M 210 233.95 L 226 233.95 Q 234 233.95 234 225.95 L 234 194 Q 234 186 242 186 L 361.95 186 Q 369.95 186 369.95 194 L 369.95 210" class="a-emphasis" data-animate="edge" style="--step:3" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:4">
-          <path data-graph-role="automatic-crossover-underlay" d="M 604 40 L 604 24 Q 604 16 612 16 L 688 16 Q 696 16 696 24 L 696 60 Q 696 68 704 68 L 720 68" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="server" data-edge-to="codec" data-edge-label="classify a-*/b-*" data-edge-key="4" data-edge-id="server-codec" data-composition-points="604,40;604,16;696,16;696,68;720,68" data-composition-crossover="halo" data-composition-independent="true" d="M 604 40 L 604 24 Q 604 16 612 16 L 688 16 Q 696 16 696 24 L 696 60 Q 696 68 704 68 L 720 68" class="a-default" data-animate="edge" style="--step:4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 194 274 L 194 358 Q 194 366 202 366 L 300 366" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="atak" data-edge-to="plain" data-edge-label="unauthenticated / testing" data-edge-key="4" data-edge-id="atak-to-plain" data-composition-points="194,274;194,366;300,366" data-composition-crossover="halo" data-composition-independent="true" d="M 194 274 L 194 358 Q 194 366 202 366 L 300 366" class="a-dashed" data-animate="edge" style="--step:4" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:5">
-          <path data-graph-role="automatic-crossover-underlay" d="M 720 82 L 704 82 Q 696 82 696 90 L 696 162 Q 696 170 688 170 L 272 170 Q 264 170 264 178 L 264 300 Q 264 308 256 308 L 240 308" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="codec" data-edge-to="geo" data-edge-label="supersede by uid" data-edge-key="5" data-edge-id="codec-geo" data-composition-points="720,82;696,82;696,170;264,170;264,308;240,308" data-composition-crossover="halo" data-composition-independent="true" d="M 720 82 L 704 82 Q 696 82 696 90 L 696 162 Q 696 170 688 170 L 272 170 Q 264 170 264 178 L 264 300 Q 264 308 256 308 L 240 308" class="a-default" data-animate="edge" style="--step:5" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 210 522 L 226 522 Q 234 522 234 514 L 234 474 Q 234 466 242 466 L 377 466 Q 385 466 385 474 L 385 490" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="mesh" data-edge-to="udp" data-edge-label="CoT XML or TAK protobuf" data-edge-key="5" data-edge-id="mesh-to-udp" data-composition-points="210,522;234,522;234,466;385,466;385,490" data-composition-crossover="halo" data-composition-independent="true" d="M 210 522 L 226 522 Q 234 522 234 514 L 234 474 Q 234 466 242 466 L 377 466 Q 385 466 385 474 L 385 490" class="a-default" data-animate="edge" style="--step:5" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:6">
-          <path data-graph-role="automatic-crossover-underlay" d="M 810 40 L 810 24 Q 810 16 818 16 L 895 16 Q 903 16 903 24 L 903 488 Q 903 496 895 496 L 605 496 Q 597 496 597 504 L 597 520" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="codec" data-edge-to="skcomms" data-edge-label="durable b-* mail" data-edge-key="6" data-edge-id="codec-skcomms" data-composition-points="810,40;810,16;903,16;903,496;597,496;597,520" data-composition-crossover="halo" data-composition-independent="true" d="M 810 40 L 810 24 Q 810 16 818 16 L 895 16 Q 903 16 903 24 L 903 488 Q 903 496 895 496 L 605 496 Q 597 496 597 504 L 597 520" class="a-default" data-animate="edge" style="--step:6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 470 249 L 507 249 Q 515 249 515 257 L 515 360 Q 515 368 523 368 L 560 368" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="tls" data-edge-to="codec" data-edge-key="6" data-edge-id="tls-to-codec" data-composition-points="470,249;515,249;515,368;560,368" data-composition-crossover="halo" data-composition-independent="true" d="M 470 249 L 507 249 Q 515 249 515 257 L 515 360 Q 515 368 523 368 L 560 368" class="a-default" data-animate="edge" style="--step:6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:7">
-          <path data-graph-role="automatic-crossover-underlay" d="M 240 322 L 280 322" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="geo" data-edge-to="geo_http" data-edge-key="7" data-edge-id="geo-geo_http" data-composition-points="240,322;280,322" data-composition-crossover="halo" data-composition-independent="true" d="M 240 322 L 280 322" class="a-default" data-animate="edge" style="--step:7" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 470 382 L 560 382" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="plain" data-edge-to="codec" data-edge-key="7" data-edge-id="plain-to-codec" data-composition-points="470,382;560,382" data-composition-crossover="halo" data-composition-independent="true" d="M 470 382 L 560 382" class="a-default" data-animate="edge" style="--step:7" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:8">
-          <path data-graph-role="automatic-crossover-underlay" d="M 370 350 L 370 427 Q 370 435 378 435 L 575 435 Q 583 435 583 443 L 583 520" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="geo_http" data-edge-to="skcomms" data-edge-label="GET /geo/units" data-edge-key="8" data-edge-id="geo_http-skcomms" data-composition-points="370,350;370,435;583,435;583,520" data-composition-crossover="halo" data-composition-independent="true" d="M 370 350 L 370 427 Q 370 435 378 435 L 575 435 Q 583 435 583 443 L 583 520" class="a-dashed" data-animate="edge" style="--step:8" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 470 506 L 568 506 Q 576 506 576 498 L 576 414" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="udp" data-edge-to="codec" data-edge-key="8" data-edge-id="udp-to-codec" data-composition-points="470,506;576,506;576,414" data-composition-crossover="halo" data-composition-independent="true" d="M 470 506 L 568 506 Q 576 506 576 498 L 576 414" class="a-default" data-animate="edge" style="--step:8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:9">
-          <path data-graph-role="automatic-crossover-underlay" d="M 720 301 L 708 301 Q 700 301 700 293 L 700 83 Q 700 75 692 75 L 680 75" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="agent" data-edge-to="server" data-edge-label="beacon + GeoChat" data-edge-key="9" data-edge-id="agent-server" data-composition-points="720,301;700,301;700,75;680,75" data-composition-crossover="halo" data-composition-independent="true" d="M 720 301 L 708 301 Q 700 301 700 293 L 700 83 Q 700 75 692 75 L 680 75" class="a-default" data-animate="edge" style="--step:9" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 730 390.05 L 820 390.05" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="codec" data-edge-to="geo" data-edge-label="every event" data-edge-key="9" data-edge-id="codec-to-geo" data-composition-points="730,390.05;820,390.05" data-composition-crossover="halo" data-composition-independent="true" d="M 730 390.05 L 820 390.05" class="a-emphasis" data-animate="edge" style="--step:9" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:10">
-          <path data-graph-role="automatic-crossover-underlay" d="M 810 350 L 810 520" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="agent" data-edge-to="llm" data-edge-label="route reply" data-edge-key="10" data-edge-id="agent-llm" data-composition-points="810,350;810,520" data-composition-crossover="halo" data-composition-independent="true" d="M 810 350 L 810 520" class="a-default" data-animate="edge" style="--step:10" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 645 350 L 645 320 Q 645 312 653 312 L 883 312 Q 891 312 891 304 L 891 274" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="codec" data-edge-to="fed" data-edge-label="a-* short TTL, no ack; b-* signed, retried" data-edge-key="10" data-edge-id="codec-to-fed" data-composition-points="645,350;645,312;891,312;891,274" data-composition-crossover="halo" data-composition-independent="true" d="M 645 350 L 645 320 Q 645 312 653 312 L 883 312 Q 891 312 891 304 L 891 274" class="a-default" data-animate="edge" style="--step:10" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:11">
-          <path data-graph-role="automatic-crossover-underlay" d="M 720 315 L 691 315 Q 683 315 683 323 L 683 787 Q 683 795 675 795 L 240 795" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="agent" data-edge-to="skcapstone" data-edge-label="optional" data-edge-key="11" data-edge-id="agent-skcapstone" data-composition-points="720,315;683,315;683,795;240,795" data-composition-crossover="halo" data-composition-independent="true" d="M 720 315 L 691 315 Q 683 315 683 323 L 683 787 Q 683 795 675 795 L 240 795" class="a-dashed" data-animate="edge" style="--step:11" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 990 242 L 1080 242" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="fed" data-edge-to="fabric" data-edge-label="federate to peers" data-edge-key="11" data-edge-id="fed-to-fabric" data-composition-points="990,242;1080,242" data-composition-crossover="halo" data-composition-independent="true" d="M 990 242 L 1080 242" class="a-emphasis" data-animate="edge" style="--step:11" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:12">
-          <path data-graph-role="automatic-crossover-underlay" d="M 150 590 L 150 606 Q 150 614 142 614 L 65 614 Q 57 614 57 606 L 57 142 Q 57 134 65 134 L 561 134 Q 569 134 569 126 L 569 110" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="client" data-edge-to="server" data-edge-label="test / peer" data-edge-key="12" data-edge-id="client-server" data-composition-points="150,590;150,614;57,614;57,134;569,134;569,110" data-composition-crossover="halo" data-composition-independent="true" d="M 150 590 L 150 606 Q 150 614 142 614 L 65 614 Q 57 614 57 606 L 57 142 Q 57 134 65 134 L 561 134 Q 569 134 569 126 L 569 110" class="a-dashed" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 1165 274 L 1165 290 Q 1165 298 1157 298 L 913 298 Q 905 298 905 290 L 905 274" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="fabric" data-edge-to="fed" data-edge-label="inbox inject to local clients" data-edge-key="12" data-edge-id="fabric-to-fed" data-composition-points="1165,274;1165,298;905,298;905,274" data-composition-crossover="halo" data-composition-independent="true" d="M 1165 274 L 1165 290 Q 1165 298 1157 298 L 913 298 Q 905 298 905 290 L 905 274" class="a-dashed" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:13">
-          <path data-graph-role="automatic-crossover-underlay" d="M 370 590 L 370 606 Q 370 614 378 614 L 696 614 Q 704 614 704 606 L 704 97 Q 704 89 696 89 L 680 89" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="service" data-edge-to="server" data-edge-label="binds listeners" data-edge-key="13" data-edge-id="service-server" data-composition-points="370,590;370,614;704,614;704,89;680,89" data-composition-crossover="halo" data-composition-independent="true" d="M 370 590 L 370 606 Q 370 614 378 614 L 696 614 Q 704 614 704 606 L 704 97 Q 704 89 696 89 L 680 89" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 905 414 L 905 490" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="geo" data-edge-to="geo_http" data-edge-key="13" data-edge-id="geo-to-http" data-composition-points="905,414;905,490" data-composition-crossover="halo" data-composition-independent="true" d="M 905 414 L 905 490" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:14">
-          <path data-graph-role="automatic-crossover-underlay" d="M 363 520 L 363 443 Q 363 435 355 435 L 158 435 Q 150 435 150 427 L 150 350" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="service" data-edge-to="geo" data-edge-label="wires inbound CoT" data-edge-key="14" data-edge-id="service-geo" data-composition-points="363,520;363,435;150,435;150,350" data-composition-crossover="halo" data-composition-independent="true" d="M 363 520 L 363 443 Q 363 435 355 435 L 158 435 Q 150 435 150 427 L 150 350" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 990 522 L 1080 522" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="geo_http" data-edge-to="skmap" data-edge-label="http GET" data-edge-key="14" data-edge-id="http-to-skmap" data-composition-points="990,522;1080,522" data-composition-crossover="halo" data-composition-independent="true" d="M 990 522 L 1080 522" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:15">
-          <path data-graph-role="automatic-crossover-underlay" d="M 391 520 L 391 504 Q 391 496 399 496 L 561 496 Q 569 496 569 504 L 569 520" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="service" data-edge-to="skcomms" data-edge-label="advertises capability" data-edge-key="15" data-edge-id="service-skcomms" data-composition-points="391,520;391,496;569,496;569,520" data-composition-crossover="halo" data-composition-independent="true" d="M 391 520 L 391 504 Q 391 496 399 496 L 561 496 Q 569 496 569 504 L 569 520" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 560 242 L 544 242 Q 536 242 536 234 L 536 194 Q 536 186 528 186 L 407 186 Q 399 186 399 194 L 399 210" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="agent" data-edge-to="tls" data-edge-label="connects as a unit" data-edge-key="15" data-edge-id="agent-to-tls" data-composition-points="560,242;536,242;536,186;399,186;399,210" data-composition-crossover="halo" data-composition-independent="true" d="M 560 242 L 544 242 Q 536 242 536 234 L 536 194 Q 536 186 528 186 L 407 186 Q 399 186 399 194 L 399 210" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:16">
+          <path data-graph-role="automatic-crossover-underlay" d="M 659 210 L 659 194 Q 659 186 667 186 L 1048 186 Q 1056 186 1056 178 L 1056 80 Q 1056 72 1064 72 L 1080 72" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="agent" data-edge-to="llm" data-edge-label="GeoChat reply" data-edge-key="16" data-edge-id="agent-to-llm" data-composition-points="659,210;659,186;1056,186;1056,72;1080,72" data-composition-crossover="halo" data-composition-independent="true" d="M 659 210 L 659 194 Q 659 186 667 186 L 1048 186 Q 1056 186 1056 178 L 1056 80 Q 1056 72 1064 72 L 1080 72" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:17">
+          <path data-graph-role="automatic-crossover-underlay" d="M 645 210 L 645 80 Q 645 72 653 72 L 820 72" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="agent" data-edge-to="skcapstone" data-edge-label="optional brain" data-edge-key="17" data-edge-id="agent-to-skcapstone" data-composition-points="645,210;645,72;820,72" data-composition-crossover="halo" data-composition-independent="true" d="M 645 210 L 645 80 Q 645 72 653 72 L 820 72" class="a-dashed" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
 
         <!-- Components -->
-        <g id="node-atak" data-node-id="atak" data-node-label="ATAK / iTAK / WinTAK" tabindex="0" role="button" aria-label="Focus ATAK / iTAK / WinTAK, enrolled TAK clients, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="enrolled TAK clients" data-node-context="Architecture component">
-          <title>ATAK / iTAK / WinTAK · enrolled TAK clients · Architecture component</title>
-          <rect x="60" y="40" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="60" y="40" width="180" height="70" rx="8" class="c-external" data-animate="node" style="--step:0" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(66 46) scale(0.6875)">
-            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
-            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="150" y="73" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">ATAK / iTAK / WinTAK</text>
-        <text data-detail="context" x="150" y="89" class="t-muted" font-size="9" text-anchor="middle">enrolled TAK clients</text>
-        </g>
-
-        <g id="node-mesh" data-node-id="mesh" data-node-label="Mesh SA peers" tabindex="0" role="button" aria-label="Focus Mesh SA peers, UDP multicast Mesh SA, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="UDP multicast Mesh SA" data-node-context="Architecture component">
-          <title>Mesh SA peers · UDP multicast Mesh SA · Architecture component</title>
-          <rect x="280" y="40" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="280" y="40" width="180" height="70" rx="8" class="c-external" data-animate="node" style="--step:1" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(286 46) scale(0.6875)">
-            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
-            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="370" y="73" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Mesh SA peers</text>
-        <text data-detail="context" x="370" y="89" class="t-muted" font-size="9" text-anchor="middle">UDP multicast Mesh SA</text>
-        </g>
-
-        <g id="node-server" data-node-id="server" data-node-label="skcot.server" tabindex="0" role="button" aria-label="Focus skcot.server, TCP :8087, TLS :8089, UDP mesh listener, Architecture component" aria-pressed="false" data-node-kind="backend" data-node-sublabel="TCP :8087, TLS :8089, UDP mesh listener" data-node-context="Architecture component">
-          <title>skcot.server · TCP :8087, TLS :8089, UDP mesh listener · Architecture component</title>
-          <rect x="500" y="40" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="500" y="40" width="180" height="70" rx="8" class="c-backend" data-animate="node" style="--step:1" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(506 46) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="590" y="73" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.server</text>
-        <text data-detail="context" x="590" y="89" class="t-muted" font-size="7.3" text-anchor="middle">TCP :8087, TLS :8089, UDP mesh listener</text>
-        </g>
-
-        <g id="node-codec" data-node-id="codec" data-node-label="skcot.codec" tabindex="0" role="button" aria-label="Focus skcot.codec, CoT XML / TAK protobuf &lt;-&gt; skcomms Envelope, Architecture component" aria-pressed="false" data-node-kind="backend" data-node-sublabel="CoT XML / TAK protobuf &lt;-&gt; skcomms Envelope" data-node-context="Architecture component">
-          <title>skcot.codec · CoT XML / TAK protobuf &lt;-&gt; skcomms Envelope · Architecture component</title>
-          <rect x="720" y="40" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="720" y="40" width="180" height="70" rx="8" class="c-backend" data-animate="node" style="--step:5" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(726 46) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="810" y="73" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.codec</text>
-        <text data-detail="context" x="810" y="89" class="t-muted" font-size="6.6" text-anchor="middle">CoT XML / TAK protobuf &lt;-&gt; skcomms Envelope</text>
-        </g>
-
-        <g id="node-geo" data-node-id="geo" data-node-label="skcot.geo (GEO_STORE)" tabindex="0" role="button" aria-label="Focus skcot.geo (GEO_STORE), situational store: units, markers, waypoints, Architecture component" aria-pressed="false" data-node-kind="database" data-node-sublabel="situational store: units, markers, waypoints" data-node-context="Architecture component">
-          <title>skcot.geo (GEO_STORE) · situational store: units, markers, waypoints · Architecture component</title>
-          <rect x="60" y="280" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="60" y="280" width="180" height="70" rx="8" class="c-database" data-animate="node" style="--step:6" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(66 286) scale(0.6875)">
-            <ellipse cx="8" cy="4" rx="5" ry="2"/>
-            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="150" y="313" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.geo (GEO_STORE)</text>
-        <text data-detail="context" x="150" y="329" class="t-muted" font-size="6.5" text-anchor="middle">situational store: units, markers, waypoints</text>
-        </g>
-
-        <g id="node-geo_http" data-node-id="geo_http" data-node-label="skcot.geo_http" tabindex="0" role="button" aria-label="Focus skcot.geo_http, read-only bridge :8091, Architecture component" aria-pressed="false" data-node-kind="backend" data-node-sublabel="read-only bridge :8091" data-node-context="Architecture component">
-          <title>skcot.geo_http · read-only bridge :8091 · Architecture component</title>
-          <rect x="280" y="280" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="280" y="280" width="180" height="70" rx="8" class="c-backend" data-animate="node" style="--step:8" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(286 286) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="370" y="313" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.geo_http</text>
-        <text data-detail="context" x="370" y="329" class="t-muted" font-size="9" text-anchor="middle">read-only bridge :8091</text>
-        </g>
-
-        <g id="node-pki" data-node-id="pki" data-node-label="skcot.pki" tabindex="0" role="button" aria-label="Focus skcot.pki, CA + per-device client certs, enrollment .zip, Architecture component" aria-pressed="false" data-node-kind="security" data-node-sublabel="CA + per-device client certs, enrollment .zip" data-node-context="Architecture component">
-          <title>skcot.pki · CA + per-device client certs, enrollment .zip · Architecture component</title>
-          <rect x="500" y="280" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="500" y="280" width="180" height="70" rx="8" class="c-security" data-animate="node" style="--step:2" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(506 286) scale(0.6875)">
+        <g id="node-pkg" data-node-id="pkg" data-node-label="Device data package" tabindex="0" role="button" aria-label="Focus Device data package, packages/&lt;device&gt;.zip, built once, skcot.pki, sovereign CA on disk" aria-pressed="false" data-node-kind="security" data-node-sublabel="packages/&lt;device&gt;.zip, built once" data-node-context="skcot.pki, sovereign CA on disk">
+          <title>Device data package · packages/&lt;device&gt;.zip, built once · skcot.pki, sovereign CA on disk</title>
+          <rect x="40" y="40" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="40" y="40" width="170" height="64" rx="8" class="c-security" data-animate="node" style="--step:1" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(46 46) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="590" y="313" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.pki</text>
-        <text data-detail="context" x="590" y="329" class="t-muted" font-size="6.3" text-anchor="middle">CA + per-device client certs, enrollment .zip</text>
+          <text data-node-label="" data-detail-anchor="" x="125" y="70" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Device data package</text>
+        <text data-detail="context" x="125" y="86" class="t-muted" font-size="8.1" text-anchor="middle">packages/&lt;device&gt;.zip, built once</text>
         </g>
 
-        <g id="node-agent" data-node-id="agent" data-node-label="skcot.agent" tabindex="0" role="button" aria-label="Focus skcot.agent, AI teammate: beacons position, answers GeoChat, Architecture component" aria-pressed="false" data-node-kind="backend" data-node-sublabel="AI teammate: beacons position, answers GeoChat" data-node-context="Architecture component">
-          <title>skcot.agent · AI teammate: beacons position, answers GeoChat · Architecture component</title>
-          <rect x="720" y="280" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="720" y="280" width="180" height="70" rx="8" class="c-backend" data-animate="node" style="--step:9" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(726 286) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+        <g id="node-ca" data-node-id="ca" data-node-label="skcot.pki CA" tabindex="0" role="button" aria-label="Focus skcot.pki CA, ca.pem / ca.key, RSA-2048 on disk, skcot.pki, sovereign CA on disk" aria-pressed="false" data-node-kind="security" data-node-sublabel="ca.pem / ca.key, RSA-2048 on disk" data-node-tag="tier T0" data-node-context="skcot.pki, sovereign CA on disk">
+          <title>skcot.pki CA · ca.pem / ca.key, RSA-2048 on disk · skcot.pki, sovereign CA on disk · tier T0</title>
+          <rect x="300" y="40" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="300" y="40" width="170" height="64" rx="8" class="c-security" data-animate="node" style="--step:0" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(306 46) scale(0.6875)">
+            <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
+            <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="810" y="313" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.agent</text>
-        <text data-detail="context" x="810" y="329" class="t-muted" font-size="6.2" text-anchor="middle">AI teammate: beacons position, answers GeoChat</text>
+          <text data-node-label="" data-detail-anchor="" x="385" y="70" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.pki CA</text>
+        <text data-detail="context" x="385" y="86" class="t-muted" font-size="8.1" text-anchor="middle">ca.pem / ca.key, RSA-2048 on disk</text>
+        <text data-detail="fine" x="385" y="96" class="t-security" font-size="7" text-anchor="middle">tier T0</text>
         </g>
 
-        <g id="node-client" data-node-id="client" data-node-label="skcot.client" tabindex="0" role="button" aria-label="Focus skcot.client, CoT test / peer client, Architecture component" aria-pressed="false" data-node-kind="backend" data-node-sublabel="CoT test / peer client" data-node-context="Architecture component">
-          <title>skcot.client · CoT test / peer client · Architecture component</title>
-          <rect x="60" y="520" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="60" y="520" width="180" height="70" rx="8" class="c-backend" data-animate="node" style="--step:12" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(66 526) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="150" y="553" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.client</text>
-        <text data-detail="context" x="150" y="569" class="t-muted" font-size="9" text-anchor="middle">CoT test / peer client</text>
-        </g>
-
-        <g id="node-service" data-node-id="service" data-node-label="skcot.service" tabindex="0" role="button" aria-label="Focus skcot.service, ties modules into one daemon, Architecture component" aria-pressed="false" data-node-kind="backend" data-node-sublabel="ties modules into one daemon" data-node-context="Architecture component">
-          <title>skcot.service · ties modules into one daemon · Architecture component</title>
-          <rect x="280" y="520" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="280" y="520" width="180" height="70" rx="8" class="c-backend" data-animate="node" style="--step:12" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(286 526) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="370" y="553" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.service</text>
-        <text data-detail="context" x="370" y="569" class="t-muted" font-size="9" text-anchor="middle">ties modules into one daemon</text>
-        </g>
-
-        <g id="node-skcomms" data-node-id="skcomms" data-node-label="skcomms fabric" tabindex="0" role="button" aria-label="Focus skcomms fabric, Envelope, identity, discovery, TOFU, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="Envelope, identity, discovery, TOFU" data-node-context="Architecture component">
-          <title>skcomms fabric · Envelope, identity, discovery, TOFU · Architecture component</title>
-          <rect x="500" y="520" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="500" y="520" width="180" height="70" rx="8" class="c-external" data-animate="node" style="--step:7" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(506 526) scale(0.6875)">
+        <g id="node-skcapstone" data-node-id="skcapstone" data-node-label="skcapstone" tabindex="0" role="button" aria-label="Focus skcapstone, optional: reasoning + memory, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="optional: reasoning + memory" data-node-tag="optional" data-node-context="Architecture component">
+          <title>skcapstone · optional: reasoning + memory · Architecture component · optional</title>
+          <rect x="820" y="40" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="820" y="40" width="170" height="64" rx="8" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(826 46) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="590" y="553" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcomms fabric</text>
-        <text data-detail="context" x="590" y="569" class="t-muted" font-size="8.1" text-anchor="middle">Envelope, identity, discovery, TOFU</text>
+          <text data-node-label="" data-detail-anchor="" x="905" y="70" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcapstone</text>
+        <text data-detail="context" x="905" y="86" class="t-muted" font-size="9" text-anchor="middle">optional: reasoning + memory</text>
+        <text data-detail="fine" x="905" y="96" class="t-external" font-size="7" text-anchor="middle">optional</text>
         </g>
 
-        <g id="node-llm" data-node-id="llm" data-node-label="configured LLM" tabindex="0" role="button" aria-label="Focus configured LLM, drives agent GeoChat replies, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="drives agent GeoChat replies" data-node-context="Architecture component">
-          <title>configured LLM · drives agent GeoChat replies · Architecture component</title>
-          <rect x="720" y="520" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="720" y="520" width="180" height="70" rx="8" class="c-external" data-animate="node" style="--step:11" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(726 526) scale(0.6875)">
+        <g id="node-llm" data-node-id="llm" data-node-label="Your own LLM" tabindex="0" role="button" aria-label="Focus Your own LLM, answers operator GeoChat, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="answers operator GeoChat" data-node-context="Architecture component">
+          <title>Your own LLM · answers operator GeoChat · Architecture component</title>
+          <rect x="1080" y="40" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="1080" y="40" width="170" height="64" rx="8" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(1086 46) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="810" y="553" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">configured LLM</text>
-        <text data-detail="context" x="810" y="569" class="t-muted" font-size="9" text-anchor="middle">drives agent GeoChat replies</text>
+          <text data-node-label="" data-detail-anchor="" x="1165" y="70" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Your own LLM</text>
+        <text data-detail="context" x="1165" y="86" class="t-muted" font-size="9" text-anchor="middle">answers operator GeoChat</text>
         </g>
 
-        <g id="node-skcapstone" data-node-id="skcapstone" data-node-label="skcapstone (optional)" tabindex="0" role="button" aria-label="Focus skcapstone (optional), optional reasoning + memory, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="optional reasoning + memory" data-node-context="Architecture component">
-          <title>skcapstone (optional) · optional reasoning + memory · Architecture component</title>
-          <rect x="60" y="760" width="180" height="70" rx="8" class="c-mask"/>
-          <rect x="60" y="760" width="180" height="70" rx="8" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(66 766) scale(0.6875)">
+        <g id="node-atak" data-node-id="atak" data-node-label="ATAK / iTAK / WinTAK" tabindex="0" role="button" aria-label="Focus ATAK / iTAK / WinTAK, enrolled TAK clients, Tactical devices (tailnet or LAN)" aria-pressed="false" data-node-kind="external" data-node-sublabel="enrolled TAK clients" data-node-context="Tactical devices (tailnet or LAN)">
+          <title>ATAK / iTAK / WinTAK · enrolled TAK clients · Tactical devices (tailnet or LAN)</title>
+          <rect x="40" y="210" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="40" y="210" width="170" height="64" rx="8" class="c-external" data-animate="node" style="--step:2" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(46 216) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="150" y="793" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcapstone (optional)</text>
-        <text data-detail="context" x="150" y="809" class="t-muted" font-size="9" text-anchor="middle">optional reasoning + memory</text>
+          <text data-node-label="" data-detail-anchor="" x="125" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">ATAK / iTAK / WinTAK</text>
+        <text data-detail="context" x="125" y="256" class="t-muted" font-size="9" text-anchor="middle">enrolled TAK clients</text>
+        </g>
+
+        <g id="node-mesh" data-node-id="mesh" data-node-label="Mesh SA device" tabindex="0" role="button" aria-label="Focus Mesh SA device, UDP multicast, no server, Tactical devices (tailnet or LAN)" aria-pressed="false" data-node-kind="external" data-node-sublabel="UDP multicast, no server" data-node-context="Tactical devices (tailnet or LAN)">
+          <title>Mesh SA device · UDP multicast, no server · Tactical devices (tailnet or LAN)</title>
+          <rect x="40" y="490" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="40" y="490" width="170" height="64" rx="8" class="c-external" data-animate="node" style="--step:5" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(46 496) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="125" y="520" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Mesh SA device</text>
+        <text data-detail="context" x="125" y="536" class="t-muted" font-size="9" text-anchor="middle">UDP multicast, no server</text>
+        </g>
+
+        <g id="node-tls" data-node-id="tls" data-node-label="TlsCotStreamServer" tabindex="0" role="button" aria-label="Focus TlsCotStreamServer, :8089 TLS, ssl.CERT_OPTIONAL, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel=":8089 TLS, ssl.CERT_OPTIONAL" data-node-tag="weak point" data-node-context="skcot.service, one process">
+          <title>TlsCotStreamServer · :8089 TLS, ssl.CERT_OPTIONAL · skcot.service, one process · weak point</title>
+          <rect x="300" y="210" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="300" y="210" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:3" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(306 216) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="385" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TlsCotStreamServer</text>
+        <text data-detail="context" x="385" y="256" class="t-muted" font-size="9" text-anchor="middle">:8089 TLS, ssl.CERT_OPTIONAL</text>
+        <text data-detail="fine" x="385" y="266" class="t-backend" font-size="7" text-anchor="middle">weak point</text>
+        </g>
+
+        <g id="node-plain" data-node-id="plain" data-node-label="CotStreamServer" tabindex="0" role="button" aria-label="Focus CotStreamServer, :8087 plain TCP, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel=":8087 plain TCP" data-node-context="skcot.service, one process">
+          <title>CotStreamServer · :8087 plain TCP · skcot.service, one process</title>
+          <rect x="300" y="350" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="300" y="350" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:5" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(306 356) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="385" y="380" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">CotStreamServer</text>
+        <text data-detail="context" x="385" y="396" class="t-muted" font-size="9" text-anchor="middle">:8087 plain TCP</text>
+        </g>
+
+        <g id="node-udp" data-node-id="udp" data-node-label="UdpMeshListener" tabindex="0" role="button" aria-label="Focus UdpMeshListener, 239.2.3.1:6969 + GeoChat group, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel="239.2.3.1:6969 + GeoChat group" data-node-context="skcot.service, one process">
+          <title>UdpMeshListener · 239.2.3.1:6969 + GeoChat group · skcot.service, one process</title>
+          <rect x="300" y="490" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="300" y="490" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:6" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(306 496) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="385" y="520" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">UdpMeshListener</text>
+        <text data-detail="context" x="385" y="536" class="t-muted" font-size="9" text-anchor="middle">239.2.3.1:6969 + GeoChat group</text>
+        </g>
+
+        <g id="node-agent" data-node-id="agent" data-node-label="skcot.agent" tabindex="0" role="button" aria-label="Focus skcot.agent, AI teammate: beacons position, reads GeoChat, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel="AI teammate: beacons position, reads GeoChat" data-node-context="skcot.service, one process">
+          <title>skcot.agent · AI teammate: beacons position, reads GeoChat · skcot.service, one process</title>
+          <rect x="560" y="210" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="560" y="210" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(566 216) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="645" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.agent</text>
+        <text data-detail="context" x="645" y="256" class="t-muted" font-size="6.1" text-anchor="middle">AI teammate: beacons position, reads GeoChat</text>
+        </g>
+
+        <g id="node-codec" data-node-id="codec" data-node-label="skcot.codec" tabindex="0" role="button" aria-label="Focus skcot.codec, is_ephemeral_beacon: a-* vs b-*, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel="is_ephemeral_beacon: a-* vs b-*" data-node-context="skcot.service, one process">
+          <title>skcot.codec · is_ephemeral_beacon: a-* vs b-* · skcot.service, one process</title>
+          <rect x="560" y="350" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="560" y="350" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:7" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(566 356) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="645" y="380" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.codec</text>
+        <text data-detail="context" x="645" y="396" class="t-muted" font-size="8.7" text-anchor="middle">is_ephemeral_beacon: a-* vs b-*</text>
+        </g>
+
+        <g id="node-fed" data-node-id="fed" data-node-label="federation_ingest" tabindex="0" role="button" aria-label="Focus federation_ingest, signed Envelope out, peer CoT injected in, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel="signed Envelope out, peer CoT injected in" data-node-context="skcot.service, one process">
+          <title>federation_ingest · signed Envelope out, peer CoT injected in · skcot.service, one process</title>
+          <rect x="820" y="210" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="820" y="210" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:11" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(826 216) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="905" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">federation_ingest</text>
+        <text data-detail="context" x="905" y="256" class="t-muted" font-size="6.5" text-anchor="middle">signed Envelope out, peer CoT injected in</text>
+        </g>
+
+        <g id="node-geo" data-node-id="geo" data-node-label="GEO_STORE" tabindex="0" role="button" aria-label="Focus GEO_STORE, in-memory, supersede by uid, skcot.service, one process" aria-pressed="false" data-node-kind="database" data-node-sublabel="in-memory, supersede by uid" data-node-context="skcot.service, one process">
+          <title>GEO_STORE · in-memory, supersede by uid · skcot.service, one process</title>
+          <rect x="820" y="350" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="820" y="350" width="170" height="64" rx="8" class="c-database" data-animate="node" style="--step:10" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(826 356) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="905" y="380" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">GEO_STORE</text>
+        <text data-detail="context" x="905" y="396" class="t-muted" font-size="9" text-anchor="middle">in-memory, supersede by uid</text>
+        </g>
+
+        <g id="node-geo_http" data-node-id="geo_http" data-node-label="skcot.geo_http" tabindex="0" role="button" aria-label="Focus skcot.geo_http, 127.0.0.1:8091, GET /geo/units, skcot.service, one process" aria-pressed="false" data-node-kind="backend" data-node-sublabel="127.0.0.1:8091, GET /geo/units" data-node-context="skcot.service, one process">
+          <title>skcot.geo_http · 127.0.0.1:8091, GET /geo/units · skcot.service, one process</title>
+          <rect x="820" y="490" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="820" y="490" width="170" height="64" rx="8" class="c-backend" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(826 496) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="905" y="520" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcot.geo_http</text>
+        <text data-detail="context" x="905" y="536" class="t-muted" font-size="9" text-anchor="middle">127.0.0.1:8091, GET /geo/units</text>
+        </g>
+
+        <g id="node-fabric" data-node-id="fabric" data-node-label="skcomms fabric" tabindex="0" role="button" aria-label="Focus skcomms fabric, CoT-capable peer nodes, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="CoT-capable peer nodes" data-node-context="Architecture component">
+          <title>skcomms fabric · CoT-capable peer nodes · Architecture component</title>
+          <rect x="1080" y="210" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="1080" y="210" width="170" height="64" rx="8" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(1086 216) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="1165" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcomms fabric</text>
+        <text data-detail="context" x="1165" y="256" class="t-muted" font-size="9" text-anchor="middle">CoT-capable peer nodes</text>
+        </g>
+
+        <g id="node-skmap" data-node-id="skmap" data-node-label="skcomms geo_store" tabindex="0" role="button" aria-label="Focus skcomms geo_store, sources live CoT for SkMap, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="sources live CoT for SkMap" data-node-context="Architecture component">
+          <title>skcomms geo_store · sources live CoT for SkMap · Architecture component</title>
+          <rect x="1080" y="490" width="170" height="64" rx="8" class="c-mask"/>
+          <rect x="1080" y="490" width="170" height="64" rx="8" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(1086 496) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="1165" y="520" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">skcomms geo_store</text>
+        <text data-detail="context" x="1165" y="536" class="t-muted" font-size="9" text-anchor="middle">sources live CoT for SkMap</text>
         </g>
 
         <!-- Connection labels -->
-        <g data-detail="context" data-edge-from="atak" data-edge-to="server" data-edge-label="CoT stream" data-edge-key="0" data-edge-id="atak-server">
-          <rect x="341" y="17" width="58" height="14" rx="3" class="c-mask"/>
-          <text x="370" y="27" class="t-edge-default" font-size="8" text-anchor="middle">CoT stream</text>
+        <g data-detail="context" data-edge-from="ca" data-edge-to="pkg" data-edge-label="signs" data-edge-key="0" data-edge-id="ca-signs-pkg">
+          <rect x="238" y="52" width="34" height="14" rx="3" class="c-mask"/>
+          <text x="255" y="62" class="t-edge-security" font-size="8" text-anchor="middle">signs</text>
         </g>
-        <g data-detail="context" data-edge-from="mesh" data-edge-to="server" data-edge-label="Mesh SA UDP" data-edge-key="1" data-edge-id="mesh-server">
-          <rect x="490" y="23.75" width="62.8" height="14" rx="3" class="c-mask"/>
-          <text x="521.4" y="33.75" class="t-edge-default" font-size="8" text-anchor="middle">Mesh SA UDP</text>
+        <g data-detail="context" data-edge-from="pkg" data-edge-to="atak" data-edge-label="imported once on the device" data-edge-key="1" data-edge-id="pkg-to-atak">
+          <rect x="131" y="150" width="139.6" height="14" rx="3" class="c-mask"/>
+          <text x="200.8" y="160" class="t-edge-security" font-size="8" text-anchor="middle">imported once on the device</text>
         </g>
-        <g data-detail="context" data-edge-from="pki" data-edge-to="atak" data-edge-label="enrollment .zip" data-edge-key="2" data-edge-id="pki-atak">
-          <rect x="325.5" y="236" width="82" height="14" rx="3" class="c-mask"/>
-          <text x="366.5" y="246" class="t-edge-security" font-size="8" text-anchor="middle">enrollment .zip</text>
+        <g data-detail="context" data-edge-from="ca" data-edge-to="tls" data-edge-label="verifies optional client certs" data-edge-key="2" data-edge-id="ca-to-tls">
+          <rect x="391" y="150" width="154" height="14" rx="3" class="c-mask"/>
+          <text x="468" y="160" class="t-edge-security" font-size="8" text-anchor="middle">verifies optional client certs</text>
         </g>
-        <g data-detail="context" data-edge-from="pki" data-edge-to="server" data-edge-label="TLS cert" data-edge-key="3" data-edge-id="pki-server">
-          <rect x="542.5999999999999" y="188" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="566.8" y="198" class="t-edge-security" font-size="8" text-anchor="middle">TLS cert</text>
+        <g data-detail="context" data-edge-from="atak" data-edge-to="tls" data-edge-label="TLS by IP (PKI cert) or by SNI name" data-edge-key="3" data-edge-id="atak-to-tls">
+          <rect x="145" y="171.975" width="178" height="14" rx="3" class="c-mask"/>
+          <text x="234" y="181.975" class="t-edge-emphasis" font-size="8" text-anchor="middle">TLS by IP (PKI cert) or by SNI name</text>
         </g>
-        <g data-detail="context" data-edge-from="server" data-edge-to="codec" data-edge-label="classify a-*/b-*" data-edge-key="4" data-edge-id="server-codec">
-          <rect x="603.2" y="22" width="86.8" height="14" rx="3" class="c-mask"/>
-          <text x="646.6" y="32" class="t-edge-default" font-size="8" text-anchor="middle">classify a-*/b-*</text>
+        <g data-detail="context" data-edge-from="atak" data-edge-to="plain" data-edge-label="unauthenticated / testing" data-edge-key="4" data-edge-id="atak-to-plain">
+          <rect x="58" y="313" width="130" height="14" rx="3" class="c-mask"/>
+          <text x="123" y="323" class="t-edge-dashed" font-size="8" text-anchor="middle">unauthenticated / testing</text>
         </g>
-        <g data-detail="context" data-edge-from="codec" data-edge-to="geo" data-edge-label="supersede by uid" data-edge-key="5" data-edge-id="codec-geo">
-          <rect x="603.2" y="119" width="86.8" height="14" rx="3" class="c-mask"/>
-          <text x="646.6" y="129" class="t-edge-default" font-size="8" text-anchor="middle">supersede by uid</text>
-        </g>
-        <g data-detail="context" data-edge-from="codec" data-edge-to="skcomms" data-edge-label="durable b-* mail" data-edge-key="6" data-edge-id="codec-skcomms">
-          <rect x="810.2" y="249" width="86.8" height="14" rx="3" class="c-mask"/>
-          <text x="853.6" y="259" class="t-edge-default" font-size="8" text-anchor="middle">durable b-* mail</text>
+        <g data-detail="context" data-edge-from="mesh" data-edge-to="udp" data-edge-label="CoT XML or TAK protobuf" data-edge-key="5" data-edge-id="mesh-to-udp">
+          <rect x="173.8" y="474" width="120.39999999999999" height="14" rx="3" class="c-mask"/>
+          <text x="234" y="484" class="t-edge-default" font-size="8" text-anchor="middle">CoT XML or TAK protobuf</text>
         </g>
 
-        <g data-detail="context" data-edge-from="geo_http" data-edge-to="skcomms" data-edge-label="GET /geo/units" data-edge-key="8" data-edge-id="geo_http-skcomms">
-          <rect x="437.9" y="415" width="77.2" height="14" rx="3" class="c-mask"/>
-          <text x="476.5" y="425" class="t-edge-dashed" font-size="8" text-anchor="middle">GET /geo/units</text>
+
+
+        <g data-detail="context" data-edge-from="codec" data-edge-to="geo" data-edge-label="every event" data-edge-key="9" data-edge-id="codec-to-geo">
+          <rect x="743.6" y="370.05" width="62.8" height="14" rx="3" class="c-mask"/>
+          <text x="775" y="380.05" class="t-edge-emphasis" font-size="8" text-anchor="middle">every event</text>
         </g>
-        <g data-detail="context" data-edge-from="agent" data-edge-to="server" data-edge-label="beacon + GeoChat" data-edge-key="9" data-edge-id="agent-server">
-          <rect x="607.2" y="181" width="86.8" height="14" rx="3" class="c-mask"/>
-          <text x="650.6" y="191" class="t-edge-default" font-size="8" text-anchor="middle">beacon + GeoChat</text>
+        <g data-detail="context" data-edge-from="codec" data-edge-to="fed" data-edge-label="a-* short TTL, no ack; b-* signed, retried" data-edge-key="10" data-edge-id="codec-to-fed">
+          <rect x="662.2" y="292" width="211.6" height="14" rx="3" class="c-mask"/>
+          <text x="768" y="302" class="t-edge-default" font-size="8" text-anchor="middle">a-* short TTL, no ack; b-* signed, retried</text>
         </g>
-        <g data-detail="context" data-edge-from="agent" data-edge-to="llm" data-edge-label="route reply" data-edge-key="10" data-edge-id="agent-llm">
-          <rect x="741.2" y="428" width="62.8" height="14" rx="3" class="c-mask"/>
-          <text x="772.6" y="438" class="t-edge-default" font-size="8" text-anchor="middle">route reply</text>
+        <g data-detail="context" data-edge-from="fed" data-edge-to="fabric" data-edge-label="federate to peers" data-edge-key="11" data-edge-id="fed-to-fabric">
+          <rect x="989.2" y="222" width="91.6" height="14" rx="3" class="c-mask"/>
+          <text x="1035" y="232" class="t-edge-emphasis" font-size="8" text-anchor="middle">federate to peers</text>
         </g>
-        <g data-detail="context" data-edge-from="agent" data-edge-to="skcapstone" data-edge-label="optional" data-edge-key="11" data-edge-id="agent-skcapstone">
-          <rect x="628.5999999999999" y="428" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="652.8" y="438" class="t-edge-dashed" font-size="8" text-anchor="middle">optional</text>
+        <g data-detail="context" data-edge-from="fabric" data-edge-to="fed" data-edge-label="inbox inject to local clients" data-edge-key="12" data-edge-id="fabric-to-fed">
+          <rect x="960.4" y="278" width="149.2" height="14" rx="3" class="c-mask"/>
+          <text x="1035" y="288" class="t-edge-dashed" font-size="8" text-anchor="middle">inbox inject to local clients</text>
         </g>
-        <g data-detail="context" data-edge-from="client" data-edge-to="server" data-edge-label="test / peer" data-edge-key="12" data-edge-id="client-server">
-          <rect x="72.1" y="594" width="62.8" height="14" rx="3" class="c-mask"/>
-          <text x="103.5" y="604" class="t-edge-dashed" font-size="8" text-anchor="middle">test / peer</text>
+
+        <g data-detail="context" data-edge-from="geo_http" data-edge-to="skmap" data-edge-label="http GET" data-edge-key="14" data-edge-id="http-to-skmap">
+          <rect x="1010.8" y="502" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="1035" y="512" class="t-edge-default" font-size="8" text-anchor="middle">http GET</text>
         </g>
-        <g data-detail="context" data-edge-from="service" data-edge-to="server" data-edge-label="binds listeners" data-edge-key="13" data-edge-id="service-server">
-          <rect x="496" y="594" width="82" height="14" rx="3" class="c-mask"/>
-          <text x="537" y="604" class="t-edge-default" font-size="8" text-anchor="middle">binds listeners</text>
+        <g data-detail="context" data-edge-from="agent" data-edge-to="tls" data-edge-label="connects as a unit" data-edge-key="15" data-edge-id="agent-to-tls">
+          <rect x="487.8" y="194" width="96.39999999999999" height="14" rx="3" class="c-mask"/>
+          <text x="536" y="204" class="t-edge-default" font-size="8" text-anchor="middle">connects as a unit</text>
         </g>
-        <g data-detail="context" data-edge-from="service" data-edge-to="geo" data-edge-label="wires inbound CoT" data-edge-key="14" data-edge-id="service-geo">
-          <rect x="210.7" y="415" width="91.6" height="14" rx="3" class="c-mask"/>
-          <text x="256.5" y="425" class="t-edge-default" font-size="8" text-anchor="middle">wires inbound CoT</text>
+        <g data-detail="context" data-edge-from="agent" data-edge-to="llm" data-edge-label="GeoChat reply" data-edge-key="16" data-edge-id="agent-to-llm">
+          <rect x="821.3" y="166" width="72.4" height="14" rx="3" class="c-mask"/>
+          <text x="857.5" y="176" class="t-edge-default" font-size="8" text-anchor="middle">GeoChat reply</text>
         </g>
-        <g data-detail="context" data-edge-from="service" data-edge-to="skcomms" data-edge-label="advertises capability" data-edge-key="15" data-edge-id="service-skcomms">
-          <rect x="424.6" y="476" width="110.8" height="14" rx="3" class="c-mask"/>
-          <text x="480" y="486" class="t-edge-default" font-size="8" text-anchor="middle">advertises capability</text>
+        <g data-detail="context" data-edge-from="agent" data-edge-to="skcapstone" data-edge-label="optional brain" data-edge-key="17" data-edge-id="agent-to-skcapstone">
+          <rect x="693.9" y="52" width="77.2" height="14" rx="3" class="c-mask"/>
+          <text x="732.5" y="62" class="t-edge-dashed" font-size="8" text-anchor="middle">optional brain</text>
         </g>
 
         <!-- Boundary labels (foreground masks keep routes out of titles) -->
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="0" data-composition-frame-kind="security-group" data-composition-frame-label="skcot.pki, sovereign CA on disk">
+          <rect data-graph-role="structural-frame-label-mask" x="14" y="20" width="177.4" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="18" y="33" class="t-security" font-size="9" font-weight="600">skcot.pki, sovereign CA on disk</text>
+        </g>
 
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="1" data-composition-frame-kind="region" data-composition-frame-label="Tactical devices (tailnet or LAN)">
+          <rect data-graph-role="structural-frame-label-mask" x="14" y="190" width="188.2" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="18" y="203" class="t-cloud" font-size="9" font-weight="600">Tactical devices (tailnet or LAN)</text>
+        </g>
+
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="2" data-composition-frame-kind="region" data-composition-frame-label="skcot.service, one process">
+          <rect data-graph-role="structural-frame-label-mask" x="667" y="190" width="150.4" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="671" y="203" class="t-cloud" font-size="9" font-weight="600">skcot.service, one process</text>
+        </g>
 
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
-          <text x="40" y="862" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Backend" data-legend-x="40" data-legend-baseline="882" data-legend-width="87">
-            <rect x="40" y="873" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
-            <text x="62" y="882" class="t-muted" font-size="10" font-weight="500">Backend</text>
+          <text x="40" y="606" class="t-primary" font-size="12" font-weight="650">Legend</text>
+          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Backend" data-legend-x="40" data-legend-baseline="626" data-legend-width="87">
+            <rect x="40" y="617" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
+            <text x="62" y="626" class="t-muted" font-size="10" font-weight="500">Backend</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Database" data-legend-x="149" data-legend-baseline="882" data-legend-width="93">
-            <rect x="149" y="873" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
-            <text x="171" y="882" class="t-muted" font-size="10" font-weight="500">Database</text>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Database" data-legend-x="149" data-legend-baseline="626" data-legend-width="93">
+            <rect x="149" y="617" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
+            <text x="171" y="626" class="t-muted" font-size="10" font-weight="500">Database</text>
           </g>
-          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Security" data-legend-x="264" data-legend-baseline="882" data-legend-width="93">
-            <rect x="264" y="873" width="16" height="10" rx="2.5" class="c-security" stroke-width="1"/>
-            <text x="286" y="882" class="t-muted" font-size="10" font-weight="500">Security</text>
+          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Security" data-legend-x="264" data-legend-baseline="626" data-legend-width="93">
+            <rect x="264" y="617" width="16" height="10" rx="2.5" class="c-security" stroke-width="1"/>
+            <text x="286" y="626" class="t-muted" font-size="10" font-weight="500">Security</text>
           </g>
-          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="External" data-legend-x="379" data-legend-baseline="882" data-legend-width="93">
-            <rect x="379" y="873" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
-            <text x="401" y="882" class="t-muted" font-size="10" font-weight="500">External</text>
+          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="External" data-legend-x="379" data-legend-baseline="626" data-legend-width="93">
+            <rect x="379" y="617" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
+            <text x="401" y="626" class="t-muted" font-size="10" font-weight="500">External</text>
           </g>
         </g>
       </svg>
@@ -5735,12 +5797,36 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <div class="card">
         <div class="card-header">
           <div class="card-dot cyan"></div>
-          <h3>The ephemeral situational rail</h3>
+          <h3>Two rails, one classifier</h3>
         </div>
         <ul>
-          <li>Atoms (a-*, position beacons) get a short TTL derived from the CoT event&#39;s own stale time, supersede-only by entity uid, no acknowledgement, gated to CoT-capable peers only</li>
-          <li>Bits (b-*, GeoChat/markers/files) ride the durable skcomms mail path: signed, retried, kept until read</li>
-          <li>skcot consumes skcomms; skcomms never imports skcot, a one-way boundary</li>
+          <li>is_ephemeral_beacon in skcot.codec decides every route: a-* position atoms vs b-* bits (GeoChat, markers, files)</li>
+          <li>Ephemeral rail: TTL derived from the event&#39;s own stale time, supersede-only by uid, no acknowledgement, sent only to CoT-capable peers</li>
+          <li>Durable rail: b-* events ride the fabric&#39;s mail path, signed, retried, kept until read</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3>A leaf on the fabric</h3>
+        </div>
+        <ul>
+          <li>skcomms is the only hard dependency: envelopes, identity, discovery, trust-on-first-use</li>
+          <li>skcomms never imports skcot; it reads live CoT at runtime over GET /geo/units instead</li>
+          <li>skcapstone is optional; without it skcot is a plain CoT/TAK bridge plus situational store</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot rose"></div>
+          <h3>Documented weak points</h3>
+        </div>
+        <ul>
+          <li>The TLS listener runs ssl.CERT_OPTIONAL: a client cert attributes a device, it does not admit one; access control is the tailnet bind</li>
+          <li>CA and server private keys sit on disk unencrypted; classical RSA-2048, maturity tier T0</li>
+          <li>Self-built reference implementation, no independent audit; see SECURITY.md before relying on it</li>
         </ul>
       </div>
     </div>
