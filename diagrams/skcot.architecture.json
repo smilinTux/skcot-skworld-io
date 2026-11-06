@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "skcot Component Map",
+    "subtitle": "The seven modules and the ephemeral/durable split. Derived from smilinTux/skcot's README.md and docs/ARCHITECTURE.md.",
+    "output": "skcot.architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "atak",
+      "type": "external",
+      "label": "ATAK / iTAK / WinTAK",
+      "sublabel": "enrolled TAK clients",
+      "pos": [
+        60,
+        40
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "mesh",
+      "type": "external",
+      "label": "Mesh SA peers",
+      "sublabel": "UDP multicast Mesh SA",
+      "pos": [
+        280,
+        40
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "skcot.server",
+      "sublabel": "TCP :8087, TLS :8089, UDP mesh listener",
+      "pos": [
+        500,
+        40
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "codec",
+      "type": "backend",
+      "label": "skcot.codec",
+      "sublabel": "CoT XML / TAK protobuf <-> skcomms Envelope",
+      "pos": [
+        720,
+        40
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "geo",
+      "type": "database",
+      "label": "skcot.geo (GEO_STORE)",
+      "sublabel": "situational store: units, markers, waypoints",
+      "pos": [
+        60,
+        280
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "geo_http",
+      "type": "backend",
+      "label": "skcot.geo_http",
+      "sublabel": "read-only bridge :8091",
+      "pos": [
+        280,
+        280
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "pki",
+      "type": "security",
+      "label": "skcot.pki",
+      "sublabel": "CA + per-device client certs, enrollment .zip",
+      "pos": [
+        500,
+        280
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "agent",
+      "type": "backend",
+      "label": "skcot.agent",
+      "sublabel": "AI teammate: beacons position, answers GeoChat",
+      "pos": [
+        720,
+        280
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "client",
+      "type": "backend",
+      "label": "skcot.client",
+      "sublabel": "CoT test / peer client",
+      "pos": [
+        60,
+        520
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "service",
+      "type": "backend",
+      "label": "skcot.service",
+      "sublabel": "ties modules into one daemon",
+      "pos": [
+        280,
+        520
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "skcomms",
+      "type": "external",
+      "label": "skcomms fabric",
+      "sublabel": "Envelope, identity, discovery, TOFU",
+      "pos": [
+        500,
+        520
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "llm",
+      "type": "external",
+      "label": "configured LLM",
+      "sublabel": "drives agent GeoChat replies",
+      "pos": [
+        720,
+        520
+      ],
+      "size": [
+        180,
+        70
+      ]
+    },
+    {
+      "id": "skcapstone",
+      "type": "external",
+      "label": "skcapstone (optional)",
+      "sublabel": "optional reasoning + memory",
+      "pos": [
+        60,
+        760
+      ],
+      "size": [
+        180,
+        70
+      ]
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "id": "atak-server",
+      "from": "atak",
+      "to": "server",
+      "label": "CoT stream",
+      "variant": "default"
+    },
+    {
+      "id": "mesh-server",
+      "from": "mesh",
+      "to": "server",
+      "label": "Mesh SA UDP",
+      "variant": "default"
+    },
+    {
+      "id": "pki-atak",
+      "from": "pki",
+      "to": "atak",
+      "label": "enrollment .zip",
+      "variant": "security"
+    },
+    {
+      "id": "pki-server",
+      "from": "pki",
+      "to": "server",
+      "label": "TLS cert",
+      "variant": "security"
+    },
+    {
+      "id": "server-codec",
+      "from": "server",
+      "to": "codec",
+      "label": "classify a-*/b-*",
+      "variant": "default"
+    },
+    {
+      "id": "codec-geo",
+      "from": "codec",
+      "to": "geo",
+      "label": "supersede by uid",
+      "variant": "default"
+    },
+    {
+      "id": "codec-skcomms",
+      "from": "codec",
+      "to": "skcomms",
+      "label": "durable b-* mail",
+      "variant": "default"
+    },
+    {
+      "id": "geo-geo_http",
+      "from": "geo",
+      "to": "geo_http",
+      "variant": "default"
+    },
+    {
+      "id": "geo_http-skcomms",
+      "from": "geo_http",
+      "to": "skcomms",
+      "label": "GET /geo/units",
+      "variant": "dashed"
+    },
+    {
+      "id": "agent-server",
+      "from": "agent",
+      "to": "server",
+      "label": "beacon + GeoChat",
+      "variant": "default"
+    },
+    {
+      "id": "agent-llm",
+      "from": "agent",
+      "to": "llm",
+      "label": "route reply",
+      "variant": "default"
+    },
+    {
+      "id": "agent-skcapstone",
+      "from": "agent",
+      "to": "skcapstone",
+      "label": "optional",
+      "variant": "dashed"
+    },
+    {
+      "id": "client-server",
+      "from": "client",
+      "to": "server",
+      "label": "test / peer",
+      "variant": "dashed"
+    },
+    {
+      "id": "service-server",
+      "from": "service",
+      "to": "server",
+      "label": "binds listeners",
+      "variant": "default"
+    },
+    {
+      "id": "service-geo",
+      "from": "service",
+      "to": "geo",
+      "label": "wires inbound CoT",
+      "variant": "default"
+    },
+    {
+      "id": "service-skcomms",
+      "from": "service",
+      "to": "skcomms",
+      "label": "advertises capability",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "The ephemeral situational rail",
+      "items": [
+        "Atoms (a-*, position beacons) get a short TTL derived from the CoT event's own stale time, supersede-only by entity uid, no acknowledgement, gated to CoT-capable peers only",
+        "Bits (b-*, GeoChat/markers/files) ride the durable skcomms mail path: signed, retried, kept until read",
+        "skcot consumes skcomms; skcomms never imports skcot, a one-way boundary"
+      ]
+    }
+  ]
+}
