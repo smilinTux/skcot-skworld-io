@@ -2,7 +2,7 @@
   "repo": "smilinTux/skcot",
   "branch": "main",
   "path": "docs",
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "note": "Committed fallback for the /docs viewer when the GitHub Contents API is unavailable or rate-limited. Regenerate from: python docs-manifest-gen.py smilinTux/skcot --out docs-manifest.json",
   "docs": [
     {
@@ -23,7 +23,7 @@
     },
     {
       "name": "README.md",
-      "title": "skcot docs"
+      "title": "README"
     },
     {
       "name": "STACK.md",
@@ -31,7 +31,7 @@
     },
     {
       "name": "STANDARDS.md",
-      "title": "SK Standards and Standing Orders"
+      "title": "STANDARDS"
     }
   ]
 }
